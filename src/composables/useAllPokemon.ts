@@ -23,8 +23,8 @@ export function useAllPokemon() {
       allPokemon.value = await Promise.all(promises)
       dismiss()
     } catch (e) {
-      console.log(e)
       dismiss()
+      throw e
     }
   }
 
