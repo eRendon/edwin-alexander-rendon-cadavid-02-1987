@@ -7,3 +7,23 @@ This template should help get you started developing with Vue 3 and TypeScript i
 - [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
 
 - Use [vue-tsc](https://github.com/vuejs/language-tools/tree/master/packages/tsc) for performing the same type checking from the command line, or for generating d.ts files for SFCs.
+
+## Example
+
+- [Web Deployed](https://edwin-alexander-rendon-cadavid-02-1987.vercel.app)
+
+## Stack
+
+- Tailwind
+- Vue Router 4
+- pinia
+- chart.js
+- vue-chart.js
+
+## Structure
+
+- Atomic Components
+- Unique Responsibility functions
+- Reusable Composable
+- Layouts Structure
+
