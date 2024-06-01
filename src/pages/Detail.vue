@@ -37,7 +37,6 @@ const { getById, pokemon, pokemonDetail } = usePokemonDetail()
 const route = useRoute()
 const router = useRouter()
 const id = ref('')
-const lang = ref('en')
 
 onMounted(async () => {
   if (route.params.id) {

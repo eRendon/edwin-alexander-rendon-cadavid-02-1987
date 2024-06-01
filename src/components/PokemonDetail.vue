@@ -40,7 +40,7 @@ import Pokemon from './Pokemon.vue'
 import { usePokemonChain } from '../composables/usePokemonChain'
 
 const props = defineProps<{
-  pokemon: IPokemon
+  pokemon?: IPokemon
 }>()
 
 const  { pokemonEvolves, getChains }  = usePokemonChain()
@@ -66,7 +66,7 @@ const selectedFlavorText = computed(() => {
 })
 
 onMounted(() => {
-  getChains(props.pokemon.evolution_chain.url)
+  getChains(props.pokemon!.evolution_chain.url)
 })
 
 </script>

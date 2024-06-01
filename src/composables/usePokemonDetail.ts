@@ -21,9 +21,8 @@ export function usePokemonDetail() {
       pokemon.value = response
       pokemonDetail.value = detail
       dismiss()
-    } catch (error: AxiosError) {
-      const { status } = error.response
-      if (status === 404) {
+    } catch (error: unknown) {
+      if (error instanceof AxiosError && error.response && error.response.status === 404) {
         showAlert({
           state: 'error',
           show: true,
