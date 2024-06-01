@@ -1,10 +1,10 @@
 <template>
-  <header class="bg-gray-900 text-white py-4 px-6 flex justify-between items-center">
-    <router-link to="#" class="text-lg font-medium hover:underline" >
+  <header class="bg-gray-900 z-10 fixed w-full text-white py-4 px-6 flex gap-8 items-center">
+    <router-link to="/" class="text-lg font-medium hover:underline" >
       Home
     </router-link>
-    <router-view tabindex="#" class="text-lg font-medium hover:underline" >
+    <router-link to="/team" class="text-lg font-medium hover:underline">
       My Team
-    </router-view>
+    </router-link>
   </header>
 </template>

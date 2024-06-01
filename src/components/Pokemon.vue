@@ -1,40 +1,68 @@
+<script setup lang="ts">
+import Card from './Atomic/Card.vue';
+import { IPokemon } from '../Interfaces/IPokemon'
+import { useTeamStore } from '../store/teamStore'
+import Button from './Atomic/Button.vue'
+import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
+
+const props = defineProps<{
+  pokemon: IPokemon
+  to: string
+}>()
+
+const teamStore = useTeamStore()
+const { team } = storeToRefs(teamStore)
+
+const addTeamData = (pokemon: IPokemon): void => {
+  teamStore.addToTeam(pokemon)
+}
+
+const deletePokemon = (pokemon: IPokemon): void => {
+  teamStore.removeFromTeam(pokemon.id)
+}
+
+const isInTeam = computed(() => {
+  return team.value.some((p) => p.id === props.pokemon.id); // Verifica si el Pokémon está en el equipo
+})
+
+</script>
+
 <template>
   <Card>
-    <img src="/bg-card.jpg" alt="imagen header card" class="card-header">
-    <div class="flex flex-col items-center">
-      <img :src="pokemon.sprites.front_default" alt="Pokémon" width={300} height={300} class="w-full image-pokemon h-48 object-contain  hover:scale-110 transition-transform duration-200 transform ease-in-out">
-      <div class="p-4">
-        <h3 class="text-xl capitalize font-bold">{{ pokemon.name }}</h3>
-        <div class="flex items-center gap-2 mt-2">
-          <span class="bg-yellow-500 text-white px-2 py-1 rounded-full text-xs">Electric</span>
-          <span class="bg-gray-200 text-gray-600 px-2 py-1 rounded-full text-xs">HP: 35</span>
-          <span class="bg-gray-200 text-gray-600 px-2 py-1 rounded-full text-xs">Attack: 55</span>
+    <router-link :to="to">
+      <img src="/bg-card.jpg" alt="imagen header card" class="card-header">
+      <div class="flex flex-col items-center">
+        <img :src="pokemon?.sprites.front_default" alt="Pokémon" width={300} height={300} class="w-full image-pokemon h-48 object-contain  hover:scale-110 transition-transform duration-200 transform ease-in-out">
+        <div class="p-4">
+          <h3 class="text-xl capitalize font-bold">{{ pokemon?.name }}
+            <span class="state">{{ pokemon?.base_experience }}hp</span>
+          </h3>
+          <slot name="weight"></slot>
+          <slot name="height"></slot>
         </div>
       </div>
-    </div>
-    <div class="flex">
-      <router-link to="#" class="block bg-gray-900 w-full text-white text-center py-2 hover:bg-gray-800" prefetch={false}>
-        View Details
-      </router-link>
-    </div>
+      <div v-if="!isInTeam" @click="addTeamData(pokemon)" class="flex">
+        <Button label="Add To My Team"></Button>
+      </div>
+      <div v-if="isInTeam" @click.prevent="deletePokemon(pokemon)" class="flex">
+        <Button styles="bg-[#303883] hover:bg-[#30388390]" label="Delete Pokemon"></Button>
+      </div>
+    </router-link>
   </Card>
 </template>
 
-<script setup lang="ts">
-import Card from './Atomic/Card/Card.vue';
-import { IPokemon } from '../Interfaces/IPokemon'
-defineProps<{
-  pokemon: IPokemon
-}>()
-</script>
-
 <style scoped>
 .image-pokemon {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border: 5px solid white;
   border-radius: 50%;
-  margin-top: calc(-100px - 5px);
+  margin-top: calc(-80px - 15px);
   background-color: white;
+}
+
+h3 {
+  font-family: 'Kumbh Sans', sans-serif;
 }
 </style>

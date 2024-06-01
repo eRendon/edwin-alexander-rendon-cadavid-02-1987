@@ -1,10 +1,7 @@
 export interface IPokemon {
   abilities: [
     {
-      ability: {
-        name: string
-        url: string
-      },
+      ability: ITrigger
       is_hidden: boolean
       slot: number
     }
@@ -14,19 +11,11 @@ export interface IPokemon {
     latest: string
     legacy: string
   }
-  forms: [
-    {
-      name: string
-      url: string
-    }
-  ]
+  forms: ITrigger[]
   game_indices: [
     {
       game_index: number
-      version: {
-        name: string
-        url: string
-      }
+      version: ITrigger
     }
   ]
 
@@ -37,21 +26,12 @@ export interface IPokemon {
   location_area_encounters: string
   moves: [
     {
-      move: {
-        name: string
-        url: string
-      }
+      move: ITrigger
       version_group_details: [
         {
           level_learned_at: number
-          move_learn_method: {
-            name: string
-            url: string
-          }
-          version_group: {
-            name: string
-            url: string
-          }
+          move_learn_method: ITrigger
+          version_group: ITrigger
         }
       ]
     }
@@ -60,10 +40,7 @@ export interface IPokemon {
   order: number
   past_abilities: []
   past_types: []
-  species: {
-    name: string
-    url: string
-  }
+  species: ITrigger
   sprites: {
     back_default: string
     back_female: string
@@ -79,20 +56,83 @@ export interface IPokemon {
     {
       base_stat: number
       effort: number
-      stat: {
-        name: string
-        url: string
-      }
+      stat: ITrigger
     }
   ]
   types: [
     {
       slot: number
-      type: {
-        name: string
-        url: string
-      }
+      type: ITrigger
     }
   ]
   weight: number
+  gender_rate: number
+  capture_rate: number
+  base_happiness: number
+  is_baby: boolean
+  is_legendary: boolean
+  is_mythical: boolean
+  color: ITrigger
+  shape: ITrigger
+  evolves_from_species: ITrigger | null
+  evolution_chain: {
+    url: string
+  };
+  habitat: ITrigger | null
+  generation: ITrigger
+  names: {
+    name: string
+    language: ITrigger
+  }[]
+  flavor_text_entries: {
+    flavor_text: string
+    language: ITrigger
+    version: ITrigger
+  }[]
+  genera: {
+    genus: string
+    language: ITrigger
+  }[]
+}
+
+
+export interface IChainResponse {
+  baby_trigger_item: null
+  chain: IChain
+  id: number
+}
+
+export interface IChain {
+  evolution_details: [{
+    gender: null
+    held_item: null
+    item: null
+    known_move: null
+    known_move_type: null
+    location: null
+    min_affection: null
+    min_beauty: null
+    min_happiness: null
+    min_level: 32
+    needs_overworld_rain: false
+    party_species: null
+    party_type: null
+    relative_physical_stats: null
+    time_of_day: ""
+    trade_species: null
+    trigger: ITrigger
+    turn_upside_down: false
+  }]
+  evolves_to: IChain[]
+  is_baby: boolean
+  species : {
+    name: string
+    url: string
+  }
+}
+
+
+export interface ITrigger {
+  name: string
+  url: string
 }
