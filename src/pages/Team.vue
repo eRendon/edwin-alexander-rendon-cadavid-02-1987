@@ -2,7 +2,7 @@
   <main class="grid grid-cols-1 gap-2">
     <div v-if="team.length > 0" v-for="pokemon of team">
       <Card class="p-4">
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
           <Pokemon :to="`/team/${pokemon.id}`" :pokemon="pokemon"></Pokemon>
           <PokemonStats :pokemon="pokemon"></PokemonStats>
         </div>

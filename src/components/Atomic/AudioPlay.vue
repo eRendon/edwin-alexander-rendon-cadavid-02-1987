@@ -1,6 +1,6 @@
 <template>
-  <div class="audio-player">
-    <div class="bg-gray-100 flex gap-5 rounded-lg p-4 items-center">
+  <div class="audio-player lg:flex">
+    <div class="bg-gray-100 justify-center mt-3 lg:mt-0 flex gap-5 rounded-lg p-4 items-center">
       <button class="font-bold flex" @click="togglePlay">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -70,7 +70,6 @@ onUnmounted(() => {
 
 <style scoped>
 .audio-player {
-  display: flex;
   align-items: center;
   gap: 10px;
 }

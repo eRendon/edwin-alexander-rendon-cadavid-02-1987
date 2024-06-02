@@ -3,7 +3,7 @@
       <div class="h-60 mr-auto ml-auto">
         <ChartPie :labels="stats?.labels" :stats="stats?.stats"></ChartPie>
       </div>
-      <div class="flex justify-end">
+      <div class="lg:flex justify-end">
         <AudioPlay :url-audio="pokemon.cries.latest"></AudioPlay>
       </div>
     </div>

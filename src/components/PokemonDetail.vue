@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-2 w-6/12 gap-3 mt-8 mb-8">
+  <div class="grid grid-cols-2 lg:w-6/12 gap-3 mt-8 mb-8">
     <form class="">
       <label for="versions"
              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select version</label>
@@ -25,7 +25,7 @@
     <h2 class="text-center mb-5">Description</h2>
     <p class="text-center">{{ selectedFlavorText }}</p>
   </Card>
-  <div class="grid grid-cols-3 gap-4 p-4">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
     <div  v-for="pokemon in pokemonEvolves">
       <Pokemon to="#" :pokemon="pokemon"></Pokemon>
     </div>

@@ -31,9 +31,13 @@ const isInTeam = computed(() => {
 <template>
   <Card>
     <router-link :to="to">
-      <img src="/bg-card.jpg" alt="imagen header card" class="card-header">
+      <img src="/bg-card.jpg" alt="imagen header card" class="card-header w-full">
       <div class="flex flex-col items-center">
-        <img :src="pokemon?.sprites.front_default" alt="Pokémon" width={300} height={300} class="w-full image-pokemon h-48 object-contain  hover:scale-110 transition-transform duration-200 transform ease-in-out">
+        <img :src="pokemon?.sprites.front_default"
+             alt="Pokémon"
+             width={300}
+             height={300}
+             class="lg:w-[150px] lg:h-[150px] w-[160px] mt-[calc(-70px-1.75rem)] sm:mt-[calc(-100px-1.75rem)] lg:mt-[calc(-60px-15px)] image-pokemon object-contain  hover:scale-110 transition-transform duration-200 transform ease-in-out">
         <div class="p-4">
           <h3 class="text-xl capitalize font-bold">{{ pokemon?.name }}
             <span class="state">{{ pokemon?.base_experience }}hp</span>
@@ -54,11 +58,8 @@ const isInTeam = computed(() => {
 
 <style scoped>
 .image-pokemon {
-  width: 150px;
-  height: 150px;
   border: 5px solid white;
   border-radius: 50%;
-  margin-top: calc(-80px - 15px);
   background-color: white;
 }
 

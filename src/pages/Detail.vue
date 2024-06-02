@@ -1,7 +1,7 @@
 <template>
   <main class="grid grid-cols-1 gap-2">
       <Card v-if="pokemon" class="p-4">
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid sm:grid-cols-2 gap-3">
           <Pokemon to="#" :pokemon="pokemon">
             <template #weight>
               <p class="text-xl capitalize font-bold">
